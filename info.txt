@@ -1,0 +1,34 @@
+@CucumberOptions(features = "src/test/resources/features",
+        glue = {"com/nopcommerce/demo/steps"},
+        tags = "@smoke",
+        plugin = {"html:target/cucumber-reports/cucumber-html-report.html",
+                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
+)
+
+-------------------------------------------------------------------
+Scenario: userShouldNavigateToLoginPageSuccessFully
+    Given I am on homepage
+    When I click on login link
+    Then I should verify that "Welcome, Please Sign In!" message display
+
+  Scenario: verifyTheErrorMessageWithInValidCredentials
+  Click on login link
+  Enter EmailId
+  Enter Password
+  Click on Login Button
+  Verify that the Error message
+
+  Scenario: verifyThatUserShouldLogInSuccessFullyWithValidCredentials
+   Click on login link
+   Enter EmailId
+   Enter Password
+   Click on Login Button
+   Verify that LogOut link is display
+
+   Scenario: VerifyThatUserShouldLogOutSuccessFully
+             Click on login link
+             Enter EmailId
+             Enter Password
+             Click on Login Button
+             Click on LogOut Link
+             Verify that LogIn Link Display
